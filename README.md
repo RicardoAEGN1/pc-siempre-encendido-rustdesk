@@ -34,7 +34,7 @@ Probado en Windows 11 Pro. Reversible.
 |---|---|---|
 | `01-boton-solo-pantalla.ps1` | No | PBUTTON=apagar pantalla (4), SBUTTON/LID=nada (0), STANDBY/HIBERNATE/HYBRID=0 nunca, en todos los planes |
 | `02-blindaje-admin.ps1` | Sí | `hibernate off`, Fast Startup OFF, RustDesk auto+recovery, NoAutoReboot=1, sin Apagar en login |
-| `03-menu-sin-apagar-admin.ps1` | Sí | Quita NoClose total y oculta SOLO Apagar+Hibernar (`PolicyManager\...\Start`: HideShutDown=1, HideHibernate=1, HideSleep=0, HideRestart=0). UIBUTTON=Suspender |
+| `03-menu-sin-apagar-admin.ps1` | Sí | Oculta Apagar+Hibernar+Reiniciar (`HideShutDown/HideHibernate/HideRestart=1`, `HideSleep=0`: solo queda Suspender). Oculta "Actualizar y apagar/reiniciar" (`NoAUShutdownOption=1`). UIBUTTON=Suspender |
 | `revertir-blindaje.ps1` | Sí | Restaura hibernación, Fast Startup, muestra Apagar, botón=Apagar (3) |
 
 ## Apagar solo por terminal
