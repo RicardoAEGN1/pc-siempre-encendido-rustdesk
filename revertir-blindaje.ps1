@@ -10,6 +10,12 @@ reg delete "HKCU\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer" /v
 reg add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" /v ShutdownWithoutLogon /t REG_DWORD /d 1 /f
 reg delete "HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU" /v NoAutoRebootWithLoggedOnUsers /f
 
+Write-Output "=== Mostrar Apagar/Hibernar en el menu (revertir 03) ==="
+reg delete "HKLM\SOFTWARE\Microsoft\PolicyManager\current\device\Start" /v HideShutDown /f
+reg delete "HKLM\SOFTWARE\Microsoft\PolicyManager\current\device\Start" /v HideHibernate /f
+reg delete "HKLM\SOFTWARE\Microsoft\PolicyManager\current\device\Start" /v HideSleep /f
+reg delete "HKLM\SOFTWARE\Microsoft\PolicyManager\current\device\Start" /v HideRestart /f
+
 # Boton fisico -> Apagar (3). Cambia a 1 (suspender) o 0 (nada) si prefieres.
 $SUB = "4f971e89-eebd-4455-a8de-9e59040e7347"
 $PB  = "7648efa3-dd9c-4e3e-b566-50f929386280"
