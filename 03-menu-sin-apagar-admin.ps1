@@ -9,11 +9,15 @@ Write-Output "=== 1. Quitar NoClose total (volvemos a menu granular) ==="
 reg delete "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\Explorer" /v NoClose /f
 reg delete "HKCU\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer" /v NoClose /f
 
-Write-Output "=== 2. Ocultar SOLO Apagar e Hibernar del menu Inicio ==="
+Write-Output "=== 2. Ocultar Apagar, Hibernar Y Reiniciar (solo queda Suspender) ==="
 reg add "HKLM\SOFTWARE\Microsoft\PolicyManager\current\device\Start" /v HideShutDown /t REG_DWORD /d 1 /f
 reg add "HKLM\SOFTWARE\Microsoft\PolicyManager\current\device\Start" /v HideHibernate /t REG_DWORD /d 1 /f
+reg add "HKLM\SOFTWARE\Microsoft\PolicyManager\current\device\Start" /v HideRestart /t REG_DWORD /d 1 /f
 reg add "HKLM\SOFTWARE\Microsoft\PolicyManager\current\device\Start" /v HideSleep /t REG_DWORD /d 0 /f
-reg add "HKLM\SOFTWARE\Microsoft\PolicyManager\current\device\Start" /v HideRestart /t REG_DWORD /d 0 /f
+
+Write-Output "=== 2b. Ocultar 'Instalar actualizaciones y apagar/reiniciar' ==="
+reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU" /v NoAUShutdownOption /t REG_DWORD /d 1 /f
+reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU" /v NoAUAsDefaultShutdownOption /t REG_DWORD /d 1 /f
 
 Write-Output "=== 3. Boton de energia del menu = Suspender (UIBUTTON=0) ==="
 $SUB = "4f971e89-eebd-4455-a8de-9e59040e7347"
